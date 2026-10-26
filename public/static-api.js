@@ -29,6 +29,7 @@
       try { const r = await realFetch('data/events.json', { cache: 'no-cache' }); return json(r.ok ? await r.json() : []); } catch (_) { return json([]); }
     },
     async lan() { return json({ shared: false, static: true, urls: [] }); },
+    async changes() { try { const r = await realFetch('data/changes.json', { cache: 'no-cache' }); return json(r.ok ? await r.json() : []); } catch (_) { return json([]); } },
     async geocode(u) {
       const q = (u.searchParams.get('q') || '').trim(); if (q.length < 3) return json({ error: 'query too short' }, 400);
       const rows = await getJson('https://nominatim.openstreetmap.org/search?q=' + encodeURIComponent(q) + '&format=jsonv2&limit=6&countrycodes=ee&accept-language=et&viewbox=24.45,59.55,25.05,59.30');

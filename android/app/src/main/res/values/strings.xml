@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Tunniplaan</string>
+    <string name="widget_name">Tunniplaan · now / next</string>
+    <string name="widget_desc">Current and next lesson</string>
+    <string name="channel_name">Lesson reminders</string>
+    <string name="offline_title">No connection</string>
+    <string name="offline_text">The timetable will load as soon as you are online.</string>
+    <string name="retry">Try again</string>
+    <string name="pick">Open the app and pick your class</string>
+    <string name="no_app">No app found to open this link</string>
+</resources>

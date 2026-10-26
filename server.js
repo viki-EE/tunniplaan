@@ -414,6 +414,7 @@ const MIME = { '.html': 'text/html; charset=utf-8', '.js': 'text/javascript', '.
 const server = http.createServer(async (req, res) => {
   const url = new URL(req.url, 'http://x');
   if (['/api/geocode', '/api/weather', '/api/route', '/api/departures'].includes(url.pathname)) return handleApi(url, res);
+  if (url.pathname === '/api/changes') return sendJson(res, 200, []); // change history is built by the GitHub Pages job
   if (url.pathname === '/api/lan') return sendJson(res, 200, { shared: HOST !== '127.0.0.1' && HOST !== 'localhost', port: PORT, urls: lanUrls() });
   if (url.pathname === '/api/debug') {
     res.writeHead(200, { 'Content-Type': 'application/json; charset=utf-8' });

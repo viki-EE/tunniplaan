@@ -1,0 +1,46 @@
+name: Android app
+on:
+  push:
+    branches: [main]
+    paths: ['android/**', '.github/workflows/android.yml']
+  workflow_dispatch:
+permissions:
+  contents: write # to publish the APK as a release
+concurrency:
+  group: android
+  cancel-in-progress: true
+jobs:
+  apk:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-java@v5
+        with:
+          distribution: temurin
+          java-version: 17
+      - uses: gradle/actions/setup-gradle@v5
+        with:
+          gradle-version: '8.14.3'
+      - name: Build signed APK
+        run: |
+          set -o pipefail
+          gradle -p android assembleRelease -PversionCode=${{ github.run_number }} --no-daemon --stacktrace 2>&1 | tee build.log
+      - name: Show build errors
+        if: failure()
+        run: |
+          # Put the important lines on the run page as annotations (logs are long).
+          grep -nE "error:|ERROR|What went wrong|FAILURE|Exception|AAPT|> " build.log | grep -v "^.*> Task" | head -60 > err.txt || true
+          [ -s err.txt ] || tail -60 build.log > err.txt
+          split -l 12 err.txt part_
+          for f in part_*; do echo "::error title=Gradle::$(sed ':a;N;$!ba;s/%/%25/g;s/\r//g;s/\n/%0A/g' "$f")"; done
+      - name: Publish release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          cp android/app/build/outputs/apk/release/app-release.apk tunniplaan.apk
+          ls -la tunniplaan.apk
+          echo "::notice title=APK::$(du -h tunniplaan.apk | cut -f1) · version 1.${{ github.run_number }}"
+          gh release create "app-1.${{ github.run_number }}" tunniplaan.apk \
+            --title "Tunniplaan for Android 1.${{ github.run_number }}" \
+            --notes "Install: download **tunniplaan.apk** on your Android phone, open it and allow installing from your browser if asked. Then add the widget from your home screen (long-press → Widgets)." \
+            --target "${{ github.sha }}" --latest

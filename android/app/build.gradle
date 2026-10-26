@@ -1,0 +1,46 @@
+plugins {
+    id 'com.android.application'
+}
+
+// Version comes from the CI run number so every build installs over the previous one.
+def vCode = (project.findProperty('versionCode') ?: '1') as Integer
+
+android {
+    namespace 'ee.oismae.tunniplaan'
+    compileSdk 35
+
+    defaultConfig {
+        applicationId 'ee.oismae.tunniplaan'
+        minSdk 24
+        targetSdk 35
+        versionCode vCode
+        versionName "1.${vCode}"
+    }
+
+    signingConfigs {
+        release {
+            // NOTE: this key is public (it lives in the repo). Only install the APK from this repo's Releases page.
+            storeFile file('../release.jks')
+            storePassword 'tunniplaan'
+            keyAlias 'tunniplaan'
+            keyPassword 'tunniplaan'
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            signingConfig signingConfigs.release
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+
+    lint {
+        abortOnError false
+        checkReleaseBuilds false
+    }
+}

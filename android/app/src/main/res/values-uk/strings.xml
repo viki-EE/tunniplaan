@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="widget_name">Tunniplaan · зараз / далі</string>
+    <string name="widget_desc">Поточний і наступний урок</string>
+    <string name="channel_name">Нагадування про уроки</string>
+    <string name="offline_title">Немає зʼєднання</string>
+    <string name="offline_text">Розклад завантажиться, щойно зʼявиться інтернет.</string>
+    <string name="retry">Спробувати ще</string>
+    <string name="pick">Відкрийте застосунок і оберіть клас</string>
+    <string name="no_app">Немає застосунку, щоб відкрити це посилання</string>
+</resources>

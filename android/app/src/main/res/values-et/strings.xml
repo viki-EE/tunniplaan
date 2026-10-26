@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="widget_name">Tunniplaan · praegu / järgmine</string>
+    <string name="widget_desc">Praegune ja järgmine tund</string>
+    <string name="channel_name">Tunni meeldetuletused</string>
+    <string name="offline_title">Ühendus puudub</string>
+    <string name="offline_text">Tunniplaan laaditakse, kui oled taas võrgus.</string>
+    <string name="retry">Proovi uuesti</string>
+    <string name="pick">Ava äpp ja vali oma klass</string>
+    <string name="no_app">Selle lingi avamiseks pole sobivat äppi</string>
+</resources>

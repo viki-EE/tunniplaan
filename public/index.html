@@ -452,6 +452,26 @@ input[type=range]{accent-color:var(--acc);width:150px}
   .bag ul{grid-template-columns:1fr 1fr}
 }
 @media print{.bnav,.slim{display:none!important}}
+
+.nowdot{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--now);margin-right:5px;vertical-align:middle}
+@media(max-width:640px){.sheet .opt:has(.seg){flex-direction:column;align-items:stretch;gap:8px}.sheet .opt:has(.seg) .seg{max-width:100%;overflow-x:auto}.sheet .opt:has(.seg) .seg button{flex:1}}
+
+/* v7 */
+:root[data-oled=on]{--bg:#000;--panel:#0a0a0c;--panel-s:#0c0c0f;--panel2:#141418;--line:#222229}
+:root[data-oled=on] body{background:#000}
+:root[data-oled=on] .top{background:#000}
+.pill.warnp{background:color-mix(in srgb,var(--warn) 22%,transparent);border:1px solid color-mix(in srgb,var(--warn) 55%,transparent);color:var(--text);cursor:pointer;font:inherit;font-size:inherit;font-weight:650}
+.calbtns{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}.calbtns .btn{text-decoration:none;display:inline-flex;align-items:center}
+.chr{display:grid;grid-template-columns:18px 104px 1fr;gap:8px;align-items:baseline;padding:7px 0;border-top:1px dashed var(--line);font-size:14px}
+.chr>b{font-size:16px}.chr.add>b{color:var(--ok)}.chr.rem>b{color:var(--now)}.chr.rem span b{text-decoration:line-through;opacity:.8}
+.chr small{display:block;color:var(--mute)}
+.steps{margin:6px 0 14px;padding-left:20px;line-height:1.6}
+
+a.btn{text-decoration:none;color:inherit}
+.sheet .url{font-size:13px}
+.chr.mov>b{color:var(--warn)}
+
+.inapp [data-act=print],.inapp #b-phone,.inapp [data-act=getapp]{display:none!important}
 </style>
 </head>
 <body>
@@ -674,6 +694,12 @@ Object.assign(I18N.en, {"more": "More", "tools": "Tools", "share": "Share", "upd
 Object.assign(I18N.et, {"more": "Rohkem", "tools": "Tööriistad", "share": "Jaga", "updated": "uuendatud", "static_old": "Tunniplaan võib olla vananenud — viimati uuendatud {t}.", "bus_priv_s": "Aadress saadetakse otse sinu brauserist OpenStreetMapile (otsing) ja peatus.ee-le (marsruudid) ning salvestatakse ainult selles brauseris.", "ev_local": "Salvestatakse ainult selles seadmes. Klassikaaslastele saatmiseks kasuta „Jaga linki“.", "ev_share": "Jaga linki", "ev_import_h": "Lisa see sündmus?", "ev_import_add": "Lisa minu sündmustesse", "ev_import_ok": "Sündmus lisatud", "ev_import_dup": "Sul on selle nime ja kuupäevaga sündmus juba olemas."});
 Object.assign(I18N.ru, {"more": "Ещё", "tools": "Инструменты", "share": "Поделиться", "updated": "обновлено", "static_old": "Расписание может быть устаревшим — обновлено {t}.", "bus_priv_s": "Адрес отправляется прямо из браузера в OpenStreetMap (поиск) и peatus.ee (маршруты) и хранится только в этом браузере.", "ev_local": "Сохраняется только на этом устройстве. Чтобы отправить одноклассникам, используйте «Поделиться ссылкой».", "ev_share": "Поделиться ссылкой", "ev_import_h": "Добавить это событие?", "ev_import_add": "Добавить в мои события", "ev_import_ok": "Событие добавлено", "ev_import_dup": "У вас уже есть событие с таким названием в этот день."});
 Object.assign(I18N.uk, {"more": "Ще", "tools": "Інструменти", "share": "Поділитися", "updated": "оновлено", "static_old": "Розклад може бути застарілим — оновлено {t}.", "bus_priv_s": "Адреса надсилається прямо з браузера до OpenStreetMap (пошук) та peatus.ee (маршрути) і зберігається лише в цьому браузері.", "ev_local": "Зберігається лише на цьому пристрої. Щоб надіслати однокласникам, скористайтеся «Поділитися посиланням».", "ev_share": "Поділитися посиланням", "ev_import_h": "Додати цю подію?", "ev_import_add": "Додати до моїх подій", "ev_import_ok": "Подію додано", "ev_import_dup": "У вас уже є подія з такою назвою цього дня."});
+Object.assign(I18N.ru, {"period": "урок", "pill_span": "{a}–{b}", "pill_total": "{n} уроков сегодня", "pill_ends": "Конец в {t}", "busy": "занят", "live_target": "Показано: {d}, {p}-й урок ({a}–{b})", "brk_lunch": "Перемена {n} мин"});
+Object.assign(I18N.uk, {"period": "урок", "pill_span": "{a}–{b}", "pill_total": "{n} уроків сьогодні", "pill_ends": "Кінець о {t}", "busy": "зайнятий", "live_target": "Показано: {d}, {p}-й урок ({a}–{b})", "brk_lunch": "Перерва {n} хв"});
+Object.assign(I18N.en, {"cal_h": "Add to calendar", "cal_sub_p": "Subscribe once and {n}’s timetable stays up to date in your calendar app (school breaks and holidays are left out).", "cal_apple": "iPhone / Mac", "cal_note": "Updates can take a few hours to show up in your calendar app.", "cal_note_c": "Includes every group in the class. Updates can take a few hours to show up.", "cal_once": "One-time copy", "cal_dl": "Download .ics file", "chg_pill": "Timetable changed", "chg_h": "Timetable changes", "chg_big": "A new timetable was published on EduPage.", "chg_none": "No changes in the last weeks.", "chg_note": "Compared with the previous copy, checked 3× a day. Substitutions are not published by the school.", "wk_in": "Weekend in {t}", "u_d": "d", "u_h": "h", "u_m": "min", "st_black": "Black", "app_h": "Android app", "app_short": "Android app", "app_row": "Widget for your home screen and lesson reminders", "app_p": "The app has the same timetable plus a home-screen widget (now / next lesson) and reminders before each lesson.", "app_s1": "Download the file below.", "app_s2": "Open it. If Android asks, allow installing apps from your browser.", "app_s3": "Open “Tunniplaan”, pick your class, then long-press the home screen → Widgets to add the widget.", "app_dl": "Download for Android (.apk)", "app_ios": "iPhone: open this page in Safari → Share → “Add to Home Screen”.", "st_notify_app": "A notification 5 min before each lesson"});
+Object.assign(I18N.et, {"cal_h": "Lisa kalendrisse", "cal_sub_p": "Telli üks kord ja {n} tunniplaan püsib su kalendris ajakohane (koolivaheajad ja pühad jäetakse välja).", "cal_apple": "iPhone / Mac", "cal_note": "Muudatuste jõudmine kalendrisse võib võtta paar tundi.", "cal_note_c": "Sisaldab kõiki klassi gruppe. Muudatuste jõudmine kalendrisse võib võtta paar tundi.", "cal_once": "Ühekordne koopia", "cal_dl": "Lae alla .ics fail", "chg_pill": "Tunniplaan muutus", "chg_h": "Tunniplaani muudatused", "chg_big": "EduPage’is avaldati uus tunniplaan.", "chg_none": "Viimastel nädalatel muudatusi pole.", "chg_note": "Võrdlus eelmise koopiaga, kontrollitakse 3× päevas. Asendusi kool EduPage’is ei avalda.", "wk_in": "Nädalavahetuseni {t}", "u_d": "p", "u_h": "t", "u_m": "min", "st_black": "Must", "app_h": "Androidi äpp", "app_short": "Androidi äpp", "app_row": "Vidin avaekraanile ja tunni meeldetuletused", "app_p": "Äpis on sama tunniplaan ning lisaks avaekraani vidin (praegune / järgmine tund) ja meeldetuletus enne iga tundi.", "app_s1": "Lae allolev fail alla.", "app_s2": "Ava see. Kui Android küsib, luba brauserist rakenduste installimine.", "app_s3": "Ava „Tunniplaan“, vali oma klass, siis vajuta avaekraanil pikalt → Vidinad, et vidin lisada.", "app_dl": "Lae alla Androidile (.apk)", "app_ios": "iPhone: ava see leht Safaris → Jaga → „Lisa avakuvale“.", "st_notify_app": "Teade 5 min enne iga tundi"});
+Object.assign(I18N.ru, {"cal_h": "Добавить в календарь", "cal_sub_p": "Подпишитесь один раз, и расписание {n} будет обновляться в календаре (каникулы и праздники исключены).", "cal_apple": "iPhone / Mac", "cal_note": "Изменения могут появиться в календаре через несколько часов.", "cal_note_c": "Включает все группы класса. Изменения могут появиться через несколько часов.", "cal_once": "Разовая копия", "cal_dl": "Скачать файл .ics", "chg_pill": "Расписание изменилось", "chg_h": "Изменения расписания", "chg_big": "В EduPage опубликовано новое расписание.", "chg_none": "За последние недели изменений нет.", "chg_note": "Сравнение с предыдущей копией, проверка 3 раза в день. Замены школа не публикует.", "wk_in": "До выходных {t}", "u_d": "д", "u_h": "ч", "u_m": "мин", "st_black": "Чёрная", "app_h": "Приложение для Android", "app_short": "Android", "app_row": "Виджет на главный экран и напоминания об уроках", "app_p": "В приложении то же расписание, а также виджет (текущий / следующий урок) и напоминание перед каждым уроком.", "app_s1": "Скачайте файл ниже.", "app_s2": "Откройте его. Если Android спросит, разрешите установку из браузера.", "app_s3": "Откройте «Tunniplaan», выберите класс, затем удерживайте палец на главном экране → Виджеты.", "app_dl": "Скачать для Android (.apk)", "app_ios": "iPhone: откройте страницу в Safari → Поделиться → «На экран Домой».", "st_notify_app": "Уведомление за 5 мин до урока"});
+Object.assign(I18N.uk, {"cal_h": "Додати до календаря", "cal_sub_p": "Підпишіться один раз, і розклад {n} оновлюватиметься в календарі (канікули й свята виключено).", "cal_apple": "iPhone / Mac", "cal_note": "Зміни можуть зʼявитися в календарі за кілька годин.", "cal_note_c": "Містить усі групи класу. Зміни можуть зʼявитися за кілька годин.", "cal_once": "Разова копія", "cal_dl": "Завантажити файл .ics", "chg_pill": "Розклад змінився", "chg_h": "Зміни розкладу", "chg_big": "В EduPage опубліковано новий розклад.", "chg_none": "За останні тижні змін немає.", "chg_note": "Порівняння з попередньою копією, перевірка 3 рази на день. Заміни школа не публікує.", "wk_in": "До вихідних {t}", "u_d": "д", "u_h": "год", "u_m": "хв", "st_black": "Чорна", "app_h": "Застосунок для Android", "app_short": "Android", "app_row": "Віджет на головний екран і нагадування про уроки", "app_p": "У застосунку той самий розклад, а також віджет (поточний / наступний урок) і нагадування перед кожним уроком.", "app_s1": "Завантажте файл нижче.", "app_s2": "Відкрийте його. Якщо Android запитає, дозвольте встановлення з браузера.", "app_s3": "Відкрийте «Tunniplaan», оберіть клас, потім утримуйте палець на головному екрані → Віджети.", "app_dl": "Завантажити для Android (.apk)", "app_ios": "iPhone: відкрийте сторінку в Safari → Поділитися → «На початковий екран».", "st_notify_app": "Сповіщення за 5 хв до уроку"});
 const BL = (typeof navigator !== 'undefined' && navigator.language ? navigator.language : 'en').slice(0, 2);
 const DEFAULTS = { lang: I18N[BL] ? BL : 'en', theme: 'dark', accent: 'violet', compact: false, fullNames: true, notify: false, scale: 100, wide: false, printMode: 'color', palette: 'vivid' };
 const S = {
@@ -783,7 +809,7 @@ function render() {
   { const cl = document.documentElement.classList; if (cl) cl.toggle('noanim', !anim); }
   $('#app').innerHTML = hero + tabsHtml() + '<div id="view"></div>';
   (views[S.view] || dayView)(ls, st, e);
-  renderFavs(); renderNav(); syncHash(); updateTitle(st, e); printHead(e);
+  renderFavs(); renderNav(); syncHash(); updateTitle(st, e); printHead(e); syncApp();
 }
 function heroHtml(e, ls, st) {
   const P = DATA.periods, today = ls.filter((l) => l.d === st.day).sort((a, b) => a.p - b.p);
@@ -805,7 +831,7 @@ function heroHtml(e, ls, st) {
       <div class="meta">${st.off ? esc(backIn(st.off)) : `${ls.reduce((a, l) => a + l.n, 0)} ${esc(t('lessons_week'))}`}</div>`;
   }
   const pills = [];
-  if (today.length) {
+  if (today.length && !st.off) {
     const first = lspan(today[0])[0], last = Math.max(...today.map((l) => lspan(l)[1]));
     const left = today.filter((l) => lspan(l)[0] > st.min || (st.live && l === st.live)).length;
     pills.push(`<span class="pill">${esc(t('pill_span', { a: fmt(first), b: fmt(last) }))}</span>`);
@@ -813,6 +839,7 @@ function heroHtml(e, ls, st) {
   }
   if (e.type === 'teacher') { const off = [0, 1, 2, 3, 4].filter((d) => !ls.some((l) => l.d === d)); if (off.length && off.length < 5) pills.push(`<span class="pill">🏠 ${esc(t('off_days', { d: off.map((d) => t('d_short')[d]).join(', ') }))}</span>`); }
   const ne = nextEventFor(e); if (ne) pills.push(`<span class="pill">${evIcon(ne)} ${esc(ne.title)} · ${esc(evWhen(ne))}</span>`);
+  { const cp = chgPill(e); if (cp) pills.unshift(cp); const wp = weekendPill(ls, st); if (wp) pills.push(wp); }
   const isFav = S.favs.some((f) => sameEnt(f, e));
   const total = ls.reduce((a, l) => a + l.n, 0);
   let sub = `${total} ${t('lessons_week')}`;
@@ -825,7 +852,7 @@ function heroHtml(e, ls, st) {
       <button class="ib" data-act="share" title="${esc(t('share'))}">🔗</button>
       <button class="ib" data-act="ics" title="${esc(t('ics'))}">📅</button>
       <button class="ib" data-act="print" title="${esc(t('print'))}">🖨</button></div>
-      <h1>${esc(ename(e))}</h1><div class="sub">${sub}</div><div class="chips">${pills.join('')}</div>${dayStrip(today, st)}</div>
+      <h1>${esc(ename(e))}</h1><div class="sub">${sub}</div><div class="chips">${pills.join('')}</div>${st.off ? '' : dayStrip(today, st)}</div>
     <div class="card now">${now}</div></section>`;
 }
 function dayBtn(i, ti) {
@@ -916,7 +943,7 @@ function weekView(ls) {
 function liveTarget() {
   const P = DATA.periods, { day, min } = nowInfo();
   if (S.live.day !== null && S.live.period !== null) return { day: S.live.day, period: S.live.period, auto: false, closed: false };
-  if (day < 5) {
+  if (day < 5 && !offOn(iso(nowDate()))) {
     const idx = P.findIndex((p) => min < mins(p.end)); // current period, or next one during a break
     if (idx >= 0) return { day, period: idx, auto: true, closed: false };
   }
@@ -1030,7 +1057,7 @@ function meetView() {
 /* ============ search ============ */
 function attachSearch(input, box, onPick) {
   let hits = [], cur = 0;
-  const row = (e, i) => `<button data-i="${i}" class="${i === cur ? 'sel' : ''}"><span class="tag ${e.type}">${esc(t('type_' + e.type))}</span><b>${esc(ename(e))}</b><span class="nm">${e.type === 'teacher' ? esc(e.short) : (e.name !== e.short ? esc(e.name) : '')}</span></button>`;
+  const row = (e, i) => `<button data-i="${i}" class="${i === cur ? 'sel' : ''}"><span class="tag ${e.type}">${esc(t('type_' + e.type))}</span><b>${esc(ename(e))}</b><span class="nm">${searchHint(e)}</span></button>`;
   function run() {
     const q = fold(input.value.trim());
     let html = '';
@@ -1143,8 +1170,8 @@ function settingsHtml() {
   const seg = (k, opts) => `<div class="seg">${opts.map(([v, l]) => `<button data-set="${k}" data-v="${v}" class="${s[k] === v ? 'on' : ''}">${esc(l)}</button>`).join('')}</div>`;
   const row = (label, ctl, sub) => `<div class="opt"><div>${esc(label)}${sub ? `<small>${esc(sub)}</small>` : ''}</div>${ctl}</div>`;
   return `<h3>${esc(t('st_title'))}<button class="ib" data-act="close">✕</button></h3>
-    ${row(t('st_lang'), seg('lang', [['en', 'EN'], ['et', 'ET'], ['ru', 'RU'], ['uk', 'UK']]))}
-    ${row(t('st_theme'), seg('theme', [['dark', t('st_dark')], ['light', t('st_light')], ['auto', t('st_auto')]]))}
+    ${row(t('st_lang'), seg('lang', [['en', 'EN'], ['et', 'ET'], ['ru', 'RU'], ['uk', 'UA']]))}
+    ${row(t('st_theme'), seg('theme', [['dark', t('st_dark')], ['black', t('st_black')], ['light', t('st_light')], ['auto', t('st_auto')]]))}
     ${row(t('st_accent'), `<div class="swatches">${['violet', 'blue', 'emerald', 'rose', 'amber'].map((v) => `<button class="sw ${s.accent === v ? 'on' : ''}" data-set="accent" data-v="${v}" data-v-name="${v}" aria-label="${v}"></button>`).join('')}</div>`)}
     ${row(t('st_pal'), seg('palette', [['vivid', t('pal_vivid')], ['pastel', t('pal_pastel')], ['cb', t('pal_cb')], ['mono', t('pal_mono')]]))}
     ${row(t('st_scale'), `<span style="display:flex;gap:8px;align-items:center"><input type="range" min="70" max="160" step="5" value="${s.scale}" data-range="scale"><b id="scalev">${s.scale}%</b></span>`)}
@@ -1152,7 +1179,8 @@ function settingsHtml() {
     ${row(t('st_names'), sw('fullNames', s.fullNames), t('st_names_d'))}
     ${row(t('st_compact'), sw('compact', s.compact), t('st_compact_d'))}
     ${row(t('st_print'), seg('printMode', [['color', t('st_print_c')], ['bw', t('st_print_bw')]]))}
-    ${row(t('st_notify'), sw('notify', s.notify), t('st_notify_d'))}
+    ${row(t('st_notify'), sw('notify', s.notify), t(IN_APP ? 'st_notify_app' : 'st_notify_d'))}
+    ${IN_APP ? '' : row(t('app_h'), `<button class="btn" data-act="getapp">📲 ${esc(t('app_short'))}</button>`, t('app_row'))}
     <div style="margin-top:16px;display:flex;gap:10px"><button class="btn" data-act="reset">${esc(t('st_reset'))}</button><div class="sp"></div><button class="btn pri" data-act="close">${esc(t('st_close'))}</button></div>`;
 }
 function helpHtml() {
@@ -1162,7 +1190,7 @@ function helpHtml() {
 function applySettings() {
   const s = S.settings, root = document.documentElement;
   const dark = s.theme === 'auto' ? !(window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) : s.theme !== 'light';
-  root.dataset.theme = dark ? 'dark' : 'light'; root.dataset.accent = s.accent; root.dataset.wide = s.wide ? 'on' : 'off'; root.dataset.print = s.printMode; root.lang = s.lang;
+  root.dataset.theme = dark ? 'dark' : 'light'; root.dataset.oled = s.theme === 'black' ? 'on' : 'off'; root.dataset.accent = s.accent; root.dataset.wide = s.wide ? 'on' : 'off'; root.dataset.print = s.printMode; root.lang = s.lang;
   if (root.style && root.style.setProperty) root.style.setProperty('--z', String((s.scale || 100) / 100));
   $$('[data-i18n]').forEach((el) => el.textContent = t(el.dataset.i18n));
   $$('[data-i18n-ph]').forEach((el) => el.placeholder = t(el.dataset.i18nPh));
@@ -1183,7 +1211,7 @@ function setSetting(k, v) {
 /* ============ reminders ============ */
 const notified = new Set();
 function maybeNotify() {
-  if (!S.settings.notify || !DATA || !S.sel || !('Notification' in window) || Notification.permission !== 'granted') return;
+  if (IN_APP || !S.settings.notify || !DATA || !S.sel || !('Notification' in window) || Notification.permission !== 'granted') return;
   const e = entOf(S.sel.type, S.sel.id); if (!e) return;
   const st = status(lessonsFor(e).filter(visible));
   if (!st.next) return;
@@ -1234,7 +1262,7 @@ document.addEventListener('keydown', (ev) => {
   else if (k === '?') actions.help();
   else if (k === 'arrowright' && S.view === 'day') { S.day = Math.min(4, S.day + 1); render(); }
   else if (k === 'arrowleft' && S.view === 'day') { S.day = Math.max(0, S.day - 1); render(); }
-  else if (k === 't') { const ti = nowInfo().day; S.day = ti > 4 ? 0 : ti; S.wk = ti > 4 ? 1 : 0; S.view = 'day'; render(); }
+  else if (k === 't') { const n = nextSchoolDay(); S.day = n.day; S.wk = n.wk; S.view = 'day'; render(); }
   else if ('dwlsmebp'.includes(k) && k.length === 1) { S.view = { d: 'day', w: 'week', l: 'live', s: 'stats', m: 'meet', e: 'events', b: 'bus', p: 'staff' }[k]; LS.set('view', S.view); if (S.view === 'meet') S.meet = []; render(); }
   else if (k === 'f') toggleFav();
   else if (/^[1-9]$/.test(k) && S.favs[+k - 1]) select(S.favs[+k - 1].type, S.favs[+k - 1].id);
@@ -1271,7 +1299,7 @@ async function load(refresh) {
   }
   buildIndex(); S.meet = [];
   const evImp = checkEvHash(); readHash(); ensureSel();
-  const ti = nowInfo().day; if (!refresh || S.day === undefined) { S.day = ti > 4 ? 0 : ti; S.wk = ti > 4 ? 1 : 0; }
+  if (!refresh || S.day === undefined) { const n = nextSchoolDay(); S.day = n.day; S.wk = n.wk; }
   applySettings(); render(); renderFootBanner();
   if (refresh) toast(t('refreshed'));
   afterLoad();
@@ -1629,7 +1657,7 @@ function toggleMine(g) {
   if (!g) S.mine[id] = []; else { const ids = g.split(','); S.mine[id] = ids.some((i) => cur.includes(i)) ? cur.filter((i) => !ids.includes(i)) : [...cur, ...ids]; }
   LS.set('mine', S.mine); render();
 }
-function afterLoad() { maybeOnboard(); evLoad().then(() => { if (DATA) render(); }); loadWx(); }
+function afterLoad() { maybeOnboard(); evLoad().then(() => { if (DATA) render(); }); loadWx(); loadChanges(); }
 
 Object.assign(actions, {
   zoomin() { setScale(S.settings.scale + 10); }, zoomout() { setScale(S.settings.scale - 10); },
@@ -1790,7 +1818,7 @@ function onboardHtml() {
   DATA.classes.forEach((c) => { const g = (String(c.short || c.name).match(/^\d+/) || ['•'])[0]; if (!by.has(g)) by.set(g, []); by.get(g).push(c); });
   const keys = [...by.keys()].sort((a, b) => (parseInt(a) || 99) - (parseInt(b) || 99));
   return `<div class="onb"><h3>${esc(t('welcome_h'))}<button class="ib" data-act="close">✕</button></h3>
-    <div class="seg" style="margin-bottom:10px">${['en', 'et', 'ru', 'uk'].map((v) => `<button data-act="onblang" data-v="${v}" class="${S.settings.lang === v ? 'on' : ''}">${v.toUpperCase()}</button>`).join('')}</div>
+    <div class="seg" style="margin-bottom:10px">${['en', 'et', 'ru', 'uk'].map((v) => `<button data-act="onblang" data-v="${v}" class="${S.settings.lang === v ? 'on' : ''}">${v === 'uk' ? 'UA' : v.toUpperCase()}</button>`).join('')}</div>
     <p>${esc(t('welcome_p'))}</p><div class="grades">${keys.map((k) => `<div class="gr"><b>${esc(k)}</b>${by.get(k).sort((a, b) => String(a.short).localeCompare(String(b.short), undefined, { numeric: true })).map((c) => `<button data-act="onbpick" data-id="${esc(c.id)}">${esc(c.short || c.name)}</button>`).join('')}</div>`).join('')}</div>
     <p class="note" style="margin-top:14px">👩‍🏫 ${esc(t('welcome_teacher'))}</p></div>`;
 }
@@ -1807,7 +1835,7 @@ Object.assign(actions, {
   phone: phoneOpen,
   copy(a) { try { navigator.clipboard.writeText(a.dataset.v).then(() => toast(t('copied'))); } catch {} },
   onblang(a) { S.settings.lang = a.dataset.v; LS.set('settings', S.settings); applySettings(); $('#sheet').innerHTML = onboardHtml(); render(); },
-  onbpick(a) { LS.set('onboarded', true); const id = a.dataset.id; if (!S.favs.some((f) => f.type === 'class' && f.id === id)) { S.favs.push({ type: 'class', id }); LS.set('favs', S.favs); } closeModal(); S.view = 'day'; const ti = nowInfo().day; S.day = ti > 4 ? 0 : ti; select('class', id, 'day'); },
+  onbpick(a) { LS.set('onboarded', true); const id = a.dataset.id; if (!S.favs.some((f) => f.type === 'class' && f.id === id)) { S.favs.push({ type: 'class', id }); LS.set('favs', S.favs); } closeModal(); S.view = 'day'; { const n = nextSchoolDay(); S.day = n.day; S.wk = n.wk; } select('class', id, 'day'); },
 });
 document.addEventListener('keydown', (ev) => {
   if (ev.key === 'Escape' && $('#focus').classList.contains('open')) { focusClose(); return; }
@@ -1827,6 +1855,30 @@ document.addEventListener('touchend', (ev) => {
 }, { passive: true });
 if (typeof navigator !== 'undefined' && navigator.serviceWorker && /^https:|^http:\/\/(localhost|127\.0\.0\.1)/.test(String(location.href || ''))) { try { navigator.serviceWorker.register('sw.js').catch(() => {}); } catch {} }
 
+function nextSchoolDay() {
+  const now = nowDate(), mon0 = dateOfDay(0, 0);
+  for (let k = 0; k < 140; k++) {
+    const d = new Date(now.getFullYear(), now.getMonth(), now.getDate() + k), wd = (d.getDay() + 6) % 7;
+    if (wd > 4 || noSchool(iso(d))) continue;
+    return { day: wd, wk: Math.round((new Date(d.getFullYear(), d.getMonth(), d.getDate() - wd) - mon0) / 6048e5) };
+  }
+  const ti = nowInfo().day; return { day: ti > 4 ? 0 : ti, wk: ti > 4 ? 1 : 0 };
+}
+
+// search result hint: where is this teacher/class/room right now (else the full/short name)
+function searchHint(e) {
+  const alt = e.type === 'teacher' ? (e.short && e.short !== ename(e) ? e.short : '') : (e.name && e.name !== e.short ? e.name : '');
+  try {
+    const st = status(lessonsFor(e).filter(visible)), l = st.live;
+    if (l) {
+      const rooms = l.r.map((id) => IDX.room[id] && IDX.room[id].short).filter(Boolean).join(', '), cls = l.c.map((id) => IDX.class[id] && IDX.class[id].short).filter(Boolean).join(', ');
+      const where = e.type === 'room' ? cls : e.type === 'class' ? `${subj(l).short || subj(l).name}${rooms ? ' · ' + rooms : ''}` : [rooms, cls].filter(Boolean).join(' · ');
+      return `<i class="nowdot"></i>${esc(where)}`;
+    }
+  } catch {}
+  return esc(alt);
+}
+
 /* ============ v6: phone navigation, share links, compact views ============ */
 const NAV_MAIN = ['day', 'week', 'live', 'bus'], NAV_MORE = ['staff', 'events', 'stats', 'meet'];
 const NAV_ICON = { day: '📅', week: '🗓️', live: '🟢', bus: '🚌', staff: '👩‍🏫', events: '📌', stats: '📊', meet: '🤝', more: '☰' };
@@ -1841,7 +1893,7 @@ function moreHtml() {
   return `<h3>${esc(t('more'))}<button class="ib" data-act="close">✕</button></h3>
     <div class="mgrid">${NAV_MORE.map((k) => b('view', k, NAV_ICON[k], t(k))).join('')}</div>
     <h4 class="mh">${esc(t('tools'))}</h4>
-    <div class="mgrid">${b('share', '', '🔗', t('share'))}${b('focus', '', '⛶', t('focus'))}${b('bells', '', '🔔', t('bell_h'))}${b('settings', '', '⚙️', t('settings'))}</div>`;
+    <div class="mgrid">${b('share', '', '🔗', t('share'))}${b('focus', '', '⛶', t('focus'))}${b('bells', '', '🔔', t('bell_h'))}${b('settings', '', '⚙️', t('settings'))}${IS_ANDROID && !IN_APP ? b('getapp', '', '📲', t('app_short')) : ''}</div>`;
 }
 function slimHero(e, st) {
   let now = '';
@@ -1853,6 +1905,7 @@ function slimHero(e, st) {
 async function shareNow() {
   const url = String(location.href);
   const e = S.sel && entOf(S.sel.type, S.sel.id), title = (e ? ename(e) + ' · ' : '') + 'Õismäe Gümnaasium';
+  if (IN_APP) { try { window.TunniplaanApp.share(title, url); return; } catch {} }
   try { if (navigator.share) { await navigator.share({ title, url }); return; } } catch (err) { if (err && err.name === 'AbortError') return; }
   try { await navigator.clipboard.writeText(url); toast(t('copied')); } catch { toast(url); }
 }
@@ -1916,12 +1969,135 @@ views.meet = function () { meetView0.apply(this, arguments); if (!isNarrow()) re
 Object.assign(actions, {
   more() { openModal(moreHtml()); },
   share: shareNow,
-  evshare(a) { const e = EV.find((x) => x.id === a.dataset.id); if (!e) return; const url = evLink(e); (async () => { try { if (navigator.share) { await navigator.share({ title: e.title, url }); return; } } catch (err) { if (err && err.name === 'AbortError') return; } try { await navigator.clipboard.writeText(url); toast(t('copied')); } catch { toast(url); } })(); },
+  evshare(a) { const e = EV.find((x) => x.id === a.dataset.id); if (!e) return; const url = evLink(e); if (IN_APP) { try { window.TunniplaanApp.share(e.title, url); return; } catch {} } (async () => { try { if (navigator.share) { await navigator.share({ title: e.title, url }); return; } } catch (err) { if (err && err.name === 'AbortError') return; } try { await navigator.clipboard.writeText(url); toast(t('copied')); } catch { toast(url); } })(); },
   evimport() { if (!EV_IMPORT) return; EV = EV.concat({ ...EV_IMPORT, id: Date.now().toString(36) + Math.random().toString(36).slice(2, 6), done: false, remind: false, updatedAt: Date.now() }); EV_IMPORT = null; evPersist(); closeModal(); toast(t('ev_import_ok')); S.view = 'events'; LS.set('view', 'events'); render(); if (!LS.get('onboarded', false) && !LS.get('sel', null)) { LS.set('onboarded', true); openModal(onboardHtml()); } },
 });
 { const _view = actions.view; actions.view = (a) => { if ($('#modal').classList.contains('open')) closeModal(); _view(a); if (window.scrollTo) window.scrollTo(0, 0); }; }
 { const _focus = actions.focus, _bells = actions.bells, _settings = actions.settings; actions.focus = () => { closeModal(); _focus(); }; actions.bells = () => { closeModal(); _bells(); }; actions.settings = () => { closeModal(); _settings(); }; }
 window.addEventListener('hashchange', () => { if (checkEvHash()) showEvImport(); });
+
+/* ============ v7: calendar subscriptions, timetable changes, weekend countdown, Android app ============ */
+const IN_APP = typeof navigator !== 'undefined' && /TunniplaanApp/.test(navigator.userAgent || '') && !!window.TunniplaanApp;
+const IS_ANDROID = typeof navigator !== 'undefined' && /Android/i.test(navigator.userAgent || '');
+const REPO = (() => { try { const h = location.hostname || ''; if (/\.github\.io$/.test(h)) { const seg = (location.pathname || '/').split('/').filter(Boolean)[0]; return `${h.split('.')[0]}/${seg || h}`; } } catch {} return 'viki-EE/tunniplaan'; })();
+const APK_URL = `https://github.com/${REPO}/releases/latest/download/tunniplaan.apk`;
+const icsFile = (type, id) => `${type}-${String(id).replace(/-/g, 'm').replace(/\*/g, 's').replace(/[^A-Za-z0-9_]/g, '_')}.ics`;
+
+// --- calendar: subscribe (auto-updating) or download once
+function calHtml(e) {
+  const canSub = window.STATIC && ['class', 'teacher', 'room'].includes(e.type);
+  let h = `<h3>📅 ${esc(t('cal_h'))}<button class="ib" data-act="close">✕</button></h3>`;
+  if (canSub) {
+    const url = new URL('data/ics/' + icsFile(e.type, e.id), location.href).href, wc = url.replace(/^https?:/, 'webcal:');
+    h += `<p>${esc(t('cal_sub_p', { n: ename(e) }))}</p>
+      <div class="calbtns"><a class="btn pri" target="_blank" rel="noopener" href="https://calendar.google.com/calendar/r?cid=${encodeURIComponent(wc)}">Google Calendar</a>
+      <a class="btn" href="${esc(wc)}">${esc(t('cal_apple'))}</a>
+      <a class="btn" target="_blank" rel="noopener" href="https://outlook.live.com/calendar/0/addfromweb?url=${encodeURIComponent(url)}&name=${encodeURIComponent(ename(e) + ' · Õismäe')}">Outlook</a></div>
+      <div class="url"><span>${esc(url)}</span><button class="btn" data-act="copy" data-v="${esc(url)}">${esc(t('phone_copy'))}</button></div>
+      <p class="note">${esc(t(e.type === 'class' ? 'cal_note_c' : 'cal_note'))}</p><h4 class="mh">${esc(t('cal_once'))}</h4>`;
+  }
+  return IN_APP ? h.replace(/<h4 class="mh">[^<]*<\/h4>$/, '') : h + `<button class="btn" data-act="icsdl">⬇️ ${esc(t('cal_dl'))}</button>`;
+}
+
+// --- timetable changes found by the 3×-a-day build (data/changes.json)
+let CHG = [];
+async function loadChanges() { try { const r = await fetch('/api/changes'); if (r.ok) { const j = await r.json(); if (Array.isArray(j)) { CHG = j; render(); } } } catch {} }
+function chgMatch(x, e) {
+  if (e.type === 'class') return x.classes.includes(e.short);
+  if (e.type === 'teacher') return x.teachers.includes(e.name);
+  if (e.type === 'room') return x.rooms.includes(e.short);
+  if (e.type === 'group') { const c = IDX.class[e.classId]; return !!c && x.classes.includes(c.short); }
+  return false;
+}
+function changesFor(e, days = 14) {
+  return CHG.filter((c) => Date.now() - Date.parse(c.at) < days * 864e5).map((c) => c.big ? { ...c } : { ...c, added: (c.added || []).filter((x) => chgMatch(x, e)), removed: (c.removed || []).filter((x) => chgMatch(x, e)) })
+    .filter((c) => c.big || c.added.length || c.removed.length).reverse();
+}
+function chgHtml(e) {
+  const loc = LOC[S.settings.lang] || 'en', list = changesFor(e, 45);
+  const row = (x, add) => `<div class="chr ${add ? 'add' : 'rem'}"><b>${add ? '+' : '−'}</b><span>${esc(t('d_short')[x.d] || '')} ${fmt(x.start)}–${fmt(x.end)}</span><span><b>${esc(x.subj)}</b>${x.groups.length ? ' · ' + esc(x.groups.join(', ')) : ''}<small>${esc([e.type === 'teacher' ? x.classes.join(', ') : x.teachers.join(', '), x.rooms.join(', ')].filter(Boolean).join(' · '))}</small></span></div>`;
+  return `<h3>⚠️ ${esc(t('chg_h'))}<button class="ib" data-act="close">✕</button></h3>` + (list.length ? list.map((c) => `<h4 class="mh">${esc(new Date(c.at).toLocaleString(loc, { weekday: 'short', day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' }))}</h4>` +
+    (c.big ? `<p>${esc(t('chg_big'))}</p>` : chgRows(c, e, row))).join('') : `<p class="note">${esc(t('chg_none'))}</p>`) + `<p class="note" style="margin-top:12px">${esc(t('chg_note'))}</p>`;
+}
+// pair a removed + added lesson at the same time (room or teacher moved) into one "changed" row
+function chgRows(c, e, row) {
+  const same = (a, b) => a.d === b.d && a.start === b.start && a.end === b.end && a.subj === b.subj && a.groups.join() === b.groups.join() && a.classes.join() === b.classes.join();
+  const rem = [...c.removed], out = [];
+  for (const x of c.added) {
+    const i = rem.findIndex((y) => same(x, y));
+    if (i < 0) { out.push(row(x, true)); continue; }
+    const y = rem.splice(i, 1)[0], what = [];
+    if (y.rooms.join() !== x.rooms.join()) what.push(`${t('type_room')} ${y.rooms.join(', ') || '—'} → ${x.rooms.join(', ') || '—'}`);
+    if (y.teachers.join() !== x.teachers.join()) what.push(`${y.teachers.join(', ') || '—'} → ${x.teachers.join(', ') || '—'}`);
+    out.push(`<div class="chr mov"><b>⇄</b><span>${esc(t('d_short')[x.d] || '')} ${fmt(x.start)}–${fmt(x.end)}</span><span><b>${esc(x.subj)}</b>${x.groups.length ? ' · ' + esc(x.groups.join(', ')) : ''}<small>${esc(what.join(' · '))}</small></span></div>`);
+  }
+  return out.join('') + rem.map((y) => row(y, false)).join('');
+}
+function chgPill(e) { const n = changesFor(e).length; return n ? `<button class="pill warnp" data-act="changes">⚠️ ${esc(t('chg_pill'))}</button>` : ''; }
+
+// --- countdown to the weekend (after the last lesson on Friday)
+function durTxt(m) { m = Math.max(0, Math.round(m)); const d = Math.floor(m / 1440), h = Math.floor((m % 1440) / 60), mm = m % 60; return d ? `${d} ${t('u_d')} ${h} ${t('u_h')}` : h ? `${h} ${t('u_h')} ${mm} ${t('u_m')}` : `${mm} ${t('u_m')}`; }
+function weekendPill(ls, st) {
+  if (st.off || st.day > 4) return '';
+  const fri = ls.filter((l) => l.d === 4), end = fri.length ? Math.max(...fri.map((l) => lspan(l)[1])) : 15 * 60;
+  const left = (4 - st.day) * 1440 + end - st.min;
+  return left > 0 ? `<span class="pill">🎉 ${esc(t('wk_in', { t: durTxt(left) }))}</span>` : '';
+}
+
+// --- Android app: download sheet in the browser, native bridge inside the app
+function appHtml() {
+  return `<h3>📲 ${esc(t('app_h'))}<button class="ib" data-act="close">✕</button></h3><p>${esc(t('app_p'))}</p>
+    <ol class="steps"><li>${esc(t('app_s1'))}</li><li>${esc(t('app_s2'))}</li><li>${esc(t('app_s3'))}</li></ol>
+    <a class="btn pri" style="display:inline-flex" href="${esc(APK_URL)}">⬇️ ${esc(t('app_dl'))}</a>
+    <p class="note" style="margin-top:12px">${esc(t('app_ios'))}</p>`;
+}
+let APP_LAST = '';
+function appPayload() {
+  const e = S.sel && entOf(S.sel.type, S.sel.id); if (!e) return null;
+  const ls = lessonsFor(e).filter(visible), now = nowDate(), items = [];
+  for (let k = 0; k < 21; k++) {
+    const d = new Date(now.getFullYear(), now.getMonth(), now.getDate() + k), wd = (d.getDay() + 6) % 7;
+    if (wd > 4 || noSchool(iso(d))) continue;
+    const base = d.getTime();
+    for (const b of mergeBlocks(ls.filter((l) => l.d === wd).sort((x, y) => x.p - y.p))) {
+      const l = b.l, room = l.r.map((id) => IDX.room[id] && IDX.room[id].short).filter(Boolean).join(', ');
+      const who = e.type === 'teacher' ? l.c.map((id) => IDX.class[id] && IDX.class[id].short).filter(Boolean).join(', ') : l.t.map((id) => IDX.teacher[id] && ename({ type: 'teacher', ...IDX.teacher[id] })).filter(Boolean).join(', ');
+      items.push({ s: base + b.start * 6e4, e: base + b.end * 6e4, t: subj(l).name, r: room, x: who });
+    }
+  }
+  return { name: ename(e), lang: S.settings.lang, reminders: !!S.settings.notify, minutes: 5, str: { now: t('f_now'), next: t('f_next'), none: t('f_free'), min: t('u_m'), room: t('type_room'), ...({ en: { until: 'until', then: 'Then' }, et: { until: 'kuni', then: 'Seejärel' }, ru: { until: 'до', then: 'Потом' }, uk: { until: 'до', then: 'Потім' } }[S.settings.lang] || {}) }, items };
+}
+function syncApp() {
+  if (!IN_APP || !DATA) return;
+  const p = appPayload(); if (!p) return;
+  const j = JSON.stringify(p); if (j === APP_LAST) return; APP_LAST = j;
+  try { window.TunniplaanApp.setSchedule(j); } catch {}
+}
+window.appBack = function () {
+  try {
+    if ($('#focus').classList.contains('open')) { focusClose(); return true; }
+    if ($('#modal').classList.contains('open')) { closeModal(); return true; }
+    const r = $('#results'); if (r && r.classList.contains('open')) { r.classList.remove('open'); return true; }
+    if (S.view !== 'day') { S.view = 'day'; LS.set('view', 'day'); render(); window.scrollTo && window.scrollTo(0, 0); return true; }
+  } catch {}
+  return false;
+};
+if (IN_APP) { try { document.documentElement.classList.add('inapp'); } catch {} }
+window.appResume = function () { try { if (DATA) render(); } catch {} };
+
+Object.assign(actions, {
+  ics() { const e = entOf(S.sel.type, S.sel.id); if (window.STATIC && ['class', 'teacher', 'room'].includes(e.type)) openModal(calHtml(e)); else exportICS(); },
+  icsdl() { closeModal(); exportICS(); },
+  changes() { openModal(chgHtml(entOf(S.sel.type, S.sel.id))); },
+  getapp() { openModal(appHtml()); },
+});
+{ // settings: reminders go through the app's own notifications when running inside it
+  const _set = setSetting;
+  setSetting = function (k, v) {
+    if (k === 'notify' && IN_APP) { S.settings.notify = !!v; LS.set('settings', S.settings); try { window.TunniplaanApp.setReminders(!!v); } catch {} APP_LAST = ''; syncApp(); if ($('#modal').classList.contains('open')) $('#sheet').innerHTML = settingsHtml(); return; }
+    return _set(k, v);
+  };
+}
 
 applySettings();
 attachSearch($('#q'), $('#results'), (e) => select(e.type, e.id), {});
