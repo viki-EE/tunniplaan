@@ -6,12 +6,18 @@ const OUT = 'probe-out'; fs.mkdirSync(OUT, { recursive: true });
 let cookie = '';
 const save = (n, s) => fs.writeFileSync(`${OUT}/${n}`, typeof s === 'string' ? s : JSON.stringify(s, null, 1));
 async function get(path) {
+  try { return await get0(path); } catch (e) { console.log('::warning::GET ' + path + ' failed: ' + (e.cause ? e.cause.code || e.cause.message : '') + ' ' + e.message); return { status: -1, text: String(e.message) + ' ' + String(e.cause && (e.cause.code || e.cause.message)) }; }
+}
+async function post(path, body) {
+  try { return await post0(path, body); } catch (e) { console.log('::warning::POST ' + path + ' failed: ' + (e.cause ? e.cause.code || e.cause.message : '') + ' ' + e.message); return { status: -1, text: String(e.message) + ' ' + String(e.cause && (e.cause.code || e.cause.message)) }; }
+}
+async function get0(path) {
   const r = await fetch(BASE + path, { headers: { 'User-Agent': UA, 'Accept-Language': 'et,en;q=0.8', ...(cookie ? { Cookie: cookie } : {}) } });
   const sc = r.headers.getSetCookie ? r.headers.getSetCookie() : [];
   if (sc.length) cookie = [...new Set([...cookie.split('; ').filter(Boolean), ...sc.map((c) => c.split(';')[0])])].join('; ');
   return { status: r.status, text: await r.text() };
 }
-async function post(path, body) {
+async function post0(path, body) {
   const r = await fetch(BASE + path, { method: 'POST', headers: { 'Content-Type': 'application/json; charset=UTF-8', 'User-Agent': UA, Accept: 'application/json, text/javascript, */*; q=0.01', Origin: BASE, Referer: BASE + '/substitution/', 'X-Requested-With': 'XMLHttpRequest', ...(cookie ? { Cookie: cookie } : {}) }, body: JSON.stringify(body) });
   return { status: r.status, text: await r.text() };
 }
@@ -39,5 +45,5 @@ async function post(path, body) {
   }
   const menu = await get('/menu/'); save('menu-page.html', menu.text.slice(0, 400000)); log.push(['GET /menu/', menu.status, menu.text.length]);
   const home = await get('/'); save('home.html', home.text.slice(0, 400000)); log.push(['GET /', home.status, home.text.length]);
-  save('log.json', log); console.log(JSON.stringify(log, null, 1));
-})().catch((e) => { console.error(e); process.exit(1); });
+  save('log.json', log); console.log('::notice::' + JSON.stringify(log.map((x) => x.slice(0, 6))).slice(0, 3000));
+})().catch((e) => { console.log('::error::' + e.stack); save('fatal.txt', String(e.stack)); });
