@@ -409,7 +409,7 @@ function lanUrls() {
   }
   return out.sort((a, b) => (/\/\/192\.168\./.test(b) ? 1 : 0) - (/\/\/192\.168\./.test(a) ? 1 : 0));
 }
-const MIME = { '.html': 'text/html; charset=utf-8', '.js': 'text/javascript', '.css': 'text/css', '.json': 'application/json', '.svg': 'image/svg+xml', '.webmanifest': 'application/manifest+json' };
+const MIME = { '.html': 'text/html; charset=utf-8', '.js': 'text/javascript', '.css': 'text/css', '.json': 'application/json', '.svg': 'image/svg+xml', '.webmanifest': 'application/manifest+json', '.png': 'image/png' };
 
 const server = http.createServer(async (req, res) => {
   const url = new URL(req.url, 'http://x');

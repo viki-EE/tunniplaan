@@ -1,5 +1,5 @@
 // Network-first; falls back to the last good copy when offline.
-const C = 'tt-v4';
+const C = 'tt-v6';
 self.addEventListener('install', (e) => self.skipWaiting());
 self.addEventListener('activate', (e) => e.waitUntil(self.clients.claim()));
 self.addEventListener('fetch', (e) => {

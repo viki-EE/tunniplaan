@@ -1,41 +1,42 @@
 # Õismäe Gümnaasium · Tunniplaan
 
-A fast, nicer viewer for https://oismae.edupage.org/timetable/
+**→ https://viki-ee.github.io/tunniplaan/**
 
-## Run
-Needs Node 18+ (no npm install).
+A faster, friendlier way to read the [Õismäe Gümnaasium EduPage timetable](https://oismae.edupage.org/timetable/), on your phone or computer. Not an official school site.
 
-    node server.js
+![Tunniplaan](public/og.png)
 
-Then open http://localhost:3000
+## What it does
+- **Today**: what's on now, how many minutes are left, what's next. Back-to-back lessons are merged, and parallel group lessons sit side by side.
+- **Week**: a grid on a computer, a day-by-day list on a phone. Prints on one A4 page.
+- **Live**: every class, teacher or room right now (or at any period). Find free rooms.
+- **Teachers**: who's at school today, who's teaching right now, who has a day off.
+- **Events**: tests, homework, trips. School breaks and public holidays are built in. Share an event with classmates as a link.
+- **Bus**: routes from your address to the first lesson and back, plus live departures from Kullerkupu, Meelespea and Rukkilille (via peatus.ee).
+- **Weather** for the trip to school and back, with what-to-wear tips.
+- **Meet**: compare classes and teachers to find common free time.
+- Groups filter ("my groups"), notes per subject, a pack-your-bag checklist, a focus mode with a big clock, the bell schedule and a calendar (.ics) export.
+- Estonian, English, Russian and Ukrainian. Dark, light or auto theme, adjustable size. Installable as an app, and it still opens offline.
 
-Env vars (optional): `SCHOOL=oismae`, `PORT=3000`, `YEAR=2026`, `HOST=0.0.0.0` (share on LAN), `SCHOOL_ADDRESS` or `SCHOOL_LAT`+`SCHOOL_LON` (bus/weather target), `DATA_DIR`.
-`?demo=1` shows fake data. `/api/debug` shows what EduPage answered.
+## How it works
+GitHub Actions (`.github/workflows/pages.yml`) runs `scripts/build-static.js` three times a day. The script downloads the public timetable from EduPage and publishes `public/` plus `data/*.json` to GitHub Pages. Weather, address search and buses are fetched straight from the visitor's browser. Events and settings stay in that browser; to publish school-wide events, commit an `events.json` to the repo root.
+
+## Run it on your own computer
+Needs Node 18+ (no `npm install`).
+
+    node server.js        # then open http://localhost:3000
+
+On Windows, double-click `start.bat`. Use `start-phone.bat` to also open it from a phone on the same Wi-Fi (📱 in the app shows a QR code). In local mode, events are shared through `events.json` with everyone using that computer's server.
+
+Optional env vars: `SCHOOL=oismae`, `PORT=3000`, `YEAR=2026`, `HOST=0.0.0.0`, `SCHOOL_ADDRESS` or `SCHOOL_LAT`+`SCHOOL_LON`, `STOP_NAMES`, `DATA_DIR`. `?demo=1` shows fake data, and `/api/debug` shows what EduPage answered.
 
 ## Files
-    server.js          scrapes EduPage, normalizes, caches (memory 10 min + cache.json for offline), serves the UI
-    public/index.html  the whole UI (no build step)
-    test/              node test/api.test.js · node test/ui-smoke.js
+    server.js                 scrapes + normalizes EduPage, local API (weather, routes, events), serves the UI
+    public/index.html         the whole UI (no build step)
+    public/static-api.js      browser stand-in for the API on GitHub Pages
+    scripts/build-static.js   builds the Pages site into _site/
+    seed/timetable.json       fallback copy if EduPage can't be reached
+    test/                     node test/api.test.js · node test/ui-smoke.js
 
-## Features
-Day / Week / Live (whole school: busy & free classes, teachers, rooms, any day+period) / Stats / Meet (find common free slots).
-Search classes, teachers, rooms, subjects · favourites · click any teacher/class/room to jump · calendar (.ics) export ·
-print · EN/ET · dark/light/auto + accent colours · lesson reminders · works offline from the last saved copy.
-
-## Also
-Staff (who has lessons today / is off), Events (shared, saved in events.json, + Estonian public holidays), Bus (address → routes via peatus.ee), weather + dress tips, week navigation, my-groups filter, EN/ET/RU/UK, size slider, print colour modes.
-
-## Keys
-`/` search · `← →` day · `[ ]` week · `T` today · `D W L S M E B P` views · `+ −` size · `F` favourite · `1–9` favourites · `?` help
-
-## New in v4
-- **Phone access:** run `start-phone.bat` (instead of `start.bat`), then press 📱 in the app and scan the QR code. Phone must be on the same Wi-Fi; allow Node.js on *Private* networks if Windows asks. Anyone on that Wi-Fi can open it and edit events.
-- **Focus mode** (⛶ or `K`): big clock with a countdown to the end of the lesson, plus the next lesson.
-- **Bell schedule** (🔔): all lesson times and breaks.
-- **Notes per subject** (✎ on a lesson), shown on every lesson of that subject.
-- **Pack your bag** checklist under each day (subjects, notes, gym clothes, homework due).
-- **First-run class picker**, **swipe** left/right to change day on phone, installable/offline (PWA) on the PC.
-
-## Live website (GitHub Pages)
-`.github/workflows/pages.yml` builds a static copy 3× a day: it scrapes EduPage (`scripts/build-static.js`) and publishes `public/` plus `data/*.json`. In the static site, weather, address search and buses are called straight from the browser; events are saved only on each device (commit an `events.json` to the repo root to publish school-wide events).
-Setup once: repo **Settings → Pages → Source: GitHub Actions**, then **Actions → Deploy site → Run workflow**.
+## Keyboard
+`/` search · `← →` day · `[ ]` week · `T` today · `D W L S M E B P` views · `K` focus · `+ −` size · `F` favourite · `1–9` favourites · `?` help

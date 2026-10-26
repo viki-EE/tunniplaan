@@ -177,6 +177,12 @@ async function run(name, env, fn) {
     E.press('b'); E.press('p'); E.press('e'); E.press('d'); E.press(']'); E.press('[');
   });
 
+  await run('v6: bottom nav, more sheet, footer', makeEnv({ base }), async (E) => {
+    assert.ok(E.get('bnav').innerHTML.includes('data-act="more"'), 'bottom nav rendered');
+    E.click('act', { act: 'more' }); assert.ok(E.get('sheet').innerHTML.includes('data-v="staff"'), 'more sheet lists other views');
+    E.click('act', { act: 'view', v: 'stats' }); assert.ok(!E.get('modal').classList.contains('open'), 'picking a view closes the sheet');
+    assert.ok(E.get('foot').innerHTML.includes('updated'), 'footer shows when data was updated');
+  });
   await run('autumn break starts on the Saturday', makeEnv({ base, now: '2026-10-24T11:00:00' }), async (E) => {
     const h = E.get('app').innerHTML;
     assert.ok(h.includes('Autumn break'), 'break shown on Saturday'); assert.ok(h.includes('Back to school'), 'back-to-school countdown');
