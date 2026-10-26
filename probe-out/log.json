@@ -1,0 +1,183 @@
+[
+ [
+  "GET /substitution/",
+  200,
+  7851
+ ],
+ [
+  "gsh",
+  "00000000"
+ ],
+ [
+  "subst",
+  "2026-10-19",
+  "classes",
+  "00000000",
+  200,
+  1180,
+  "{\"r\":\"<div class=\\\"_RSS439\\\"><style type=\\\"text/css\\\">._RSS439 .signature {font-Size:20px;float:right;border-Bottom:1px "
+ ],
+ [
+  "subst",
+  "2026-10-19",
+  "teachers",
+  "00000000",
+  200,
+  1180,
+  "{\"r\":\"<div class=\\\"_RSS440\\\"><style type=\\\"text/css\\\">._RSS440 .signature {font-Size:20px;float:right;border-Bottom:1px "
+ ],
+ [
+  "subst",
+  "2026-10-20",
+  "classes",
+  "00000000",
+  200,
+  1180,
+  "{\"r\":\"<div class=\\\"_RSS441\\\"><style type=\\\"text/css\\\">._RSS441 .signature {font-Size:20px;float:right;border-Bottom:1px "
+ ],
+ [
+  "subst",
+  "2026-10-20",
+  "teachers",
+  "00000000",
+  200,
+  1180,
+  "{\"r\":\"<div class=\\\"_RSS442\\\"><style type=\\\"text/css\\\">._RSS442 .signature {font-Size:20px;float:right;border-Bottom:1px "
+ ],
+ [
+  "subst",
+  "2026-10-21",
+  "classes",
+  "00000000",
+  200,
+  1180,
+  "{\"r\":\"<div class=\\\"_RSS443\\\"><style type=\\\"text/css\\\">._RSS443 .signature {font-Size:20px;float:right;border-Bottom:1px "
+ ],
+ [
+  "subst",
+  "2026-10-21",
+  "teachers",
+  "00000000",
+  200,
+  1180,
+  "{\"r\":\"<div class=\\\"_RSS444\\\"><style type=\\\"text/css\\\">._RSS444 .signature {font-Size:20px;float:right;border-Bottom:1px "
+ ],
+ [
+  "subst",
+  "2026-10-22",
+  "classes",
+  "00000000",
+  200,
+  1180,
+  "{\"r\":\"<div class=\\\"_RSS445\\\"><style type=\\\"text/css\\\">._RSS445 .signature {font-Size:20px;float:right;border-Bottom:1px "
+ ],
+ [
+  "subst",
+  "2026-10-22",
+  "teachers",
+  "00000000",
+  200,
+  1180,
+  "{\"r\":\"<div class=\\\"_RSS446\\\"><style type=\\\"text/css\\\">._RSS446 .signature {font-Size:20px;float:right;border-Bottom:1px "
+ ],
+ [
+  "subst",
+  "2026-10-23",
+  "classes",
+  "00000000",
+  200,
+  1180,
+  "{\"r\":\"<div class=\\\"_RSS447\\\"><style type=\\\"text/css\\\">._RSS447 .signature {font-Size:20px;float:right;border-Bottom:1px "
+ ],
+ [
+  "subst",
+  "2026-10-23",
+  "teachers",
+  "00000000",
+  200,
+  1180,
+  "{\"r\":\"<div class=\\\"_RSS448\\\"><style type=\\\"text/css\\\">._RSS448 .signature {font-Size:20px;float:right;border-Bottom:1px "
+ ],
+ [
+  "subst",
+  "2026-10-12",
+  "classes",
+  "00000000",
+  200,
+  1180,
+  "{\"r\":\"<div class=\\\"_RSS449\\\"><style type=\\\"text/css\\\">._RSS449 .signature {font-Size:20px;float:right;border-Bottom:1px "
+ ],
+ [
+  "subst",
+  "2026-10-12",
+  "teachers",
+  "00000000",
+  200,
+  1180,
+  "{\"r\":\"<div class=\\\"_RSS450\\\"><style type=\\\"text/css\\\">._RSS450 .signature {font-Size:20px;float:right;border-Bottom:1px "
+ ],
+ [
+  "subst",
+  "2026-10-27",
+  "classes",
+  "00000000",
+  200,
+  1180,
+  "{\"r\":\"<div class=\\\"_RSS451\\\"><style type=\\\"text/css\\\">._RSS451 .signature {font-Size:20px;float:right;border-Bottom:1px "
+ ],
+ [
+  "subst",
+  "2026-10-27",
+  "teachers",
+  "00000000",
+  200,
+  1180,
+  "{\"r\":\"<div class=\\\"_RSS452\\\"><style type=\\\"text/css\\\">._RSS452 .signature {font-Size:20px;float:right;border-Bottom:1px "
+ ],
+ [
+  "subst",
+  "2026-11-02",
+  "classes",
+  "00000000",
+  200,
+  1180,
+  "{\"r\":\"<div class=\\\"_RSS453\\\"><style type=\\\"text/css\\\">._RSS453 .signature {font-Size:20px;float:right;border-Bottom:1px "
+ ],
+ [
+  "subst",
+  "2026-11-02",
+  "teachers",
+  "00000000",
+  200,
+  1180,
+  "{\"r\":\"<div class=\\\"_RSS454\\\"><style type=\\\"text/css\\\">._RSS454 .signature {font-Size:20px;float:right;border-Bottom:1px "
+ ],
+ [
+  "currenttt",
+  "classes",
+  "-133",
+  2026,
+  200,
+  9673,
+  "{\"r\":{\"ttitems\":[{\"type\":\"card\",\"date\":\"2026-10-19\",\"uniperiod\":\"0\",\"starttime\":\"08:00\",\"endtime\":\"08:45\",\"subjectid\":\"-58\",\"classids\":[\"-133\"],\"groupnames\":[\"\""
+ ],
+ [
+  "currenttt",
+  "teachers",
+  "-1",
+  2026,
+  200,
+  3072,
+  "{\"r\":{\"ttitems\":[{\"type\":\"card\",\"date\":\"2026-10-19\",\"uniperiod\":\"4\",\"starttime\":\"11:45\",\"endtime\":\"12:30\",\"subjectid\":\"-7\",\"classids\":[\"-126\"],\"groupnames\":[\"\"]"
+ ],
+ [
+  "GET /menu/",
+  404,
+  44
+ ],
+ [
+  "GET /",
+  200,
+  10841
+ ]
+]
