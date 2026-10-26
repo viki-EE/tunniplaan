@@ -21,12 +21,21 @@ const note = (lvl, title, msg) => console.log(process.env.GITHUB_ACTIONS ? `::${
   const prevTT = await live('timetable.json'), prevChanges = (await live('changes.json')) || [];
 
   let tt;
-  try { tt = await fetchFresh(); note('notice', 'EduPage', `OK: ${tt.lessons.length} lessons, ${tt.classes.length} classes, ${tt.teachers.length} teachers (${(tt.timetable && tt.timetable.name) || '?'})`); }
+  try {
+    // EduPage occasionally drops a connection: try a few times before giving up.
+    let lastErr;
+    for (let i = 1; i <= 4 && !tt; i++) {
+      try { tt = await fetchFresh(); } catch (e) { lastErr = e; console.log(`EduPage attempt ${i} failed: ${e.message}${e.cause ? ' (' + (e.cause.code || e.cause.message) + ')' : ''}`); if (i < 4) await new Promise((r) => setTimeout(r, 4000 * i)); }
+    }
+    if (!tt) throw lastErr;
+    note('notice', 'EduPage', `OK: ${tt.lessons.length} lessons, ${tt.classes.length} classes, ${tt.teachers.length} teachers (${(tt.timetable && tt.timetable.name) || '?'})`);
+  }
   catch (e) {
     // Keep what the live site already has if possible (fresher than the seed), else the seed copy.
     const prev = prevTT && Array.isArray(prevTT.lessons) && prevTT.lessons.length ? prevTT : null;
-    note('warning', 'EduPage', `scrape failed (${e.message}); publishing ${prev ? 'the previous live copy' : 'seed/timetable.json'} instead`);
-    tt = { ...(prev || JSON.parse(fs.readFileSync(path.join(ROOT, 'seed', 'timetable.json'), 'utf8'))), stale: true };
+    note('warning', 'EduPage', `scrape failed (${e.message}${e.cause ? ', ' + (e.cause.code || e.cause.message) : ''}); publishing ${prev ? 'the previous live copy' : 'seed/timetable.json'} instead`);
+    // The previous live copy keeps its own fetchedAt, so the page only warns once it is really old.
+    tt = prev ? (({ stale, staleReason, ...rest }) => rest)(prev) : { ...JSON.parse(fs.readFileSync(path.join(ROOT, 'seed', 'timetable.json'), 'utf8')), stale: true };
   }
   fs.writeFileSync(path.join(OUT, 'data', 'timetable.json'), JSON.stringify(tt));
 
